@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="index.js"></script>
+    <title>My Dictionary</title>
+</head>
+<body>
+    <header>
+        <h1>My Dictionary</h1>
+        <button>+ Add New</button>
+    </header>
+
+    <main>
+        <table>
+
+            <thead>
+                <tr>WORDS</tr>
+                <tr>EXAMPLES</tr>
+                <tr>TRANSLATION</tr>
+            </thead>
+
+            <tbody id="table-body">
+            </tbody>
+
+        </table>
+    </main>
+
+    <!-- Modal Popup -->
+    <div id="modal" class="modal-hidden">
+        <div class="modal-content">
+
+            <h2>Add New Entry</h2>
+
+            <form id="add-form">
+                <!-- Word -->
+                <div class="form-group">
+                    <label for="word">Word</label>
+                    <input id="word" type="text" required>
+                </div>
+
+                <!-- Example -->
+                 <div class="form-group">
+                    <label for="example">Example</label>
+                    <input id="example" type="text" required>
+                </div> 
+
+                <!-- Translation -->
+                <div class="form-group">
+                    <label for="translation">Translation</label>
+                    <input id="translation" type="text" required>
+                </div>
+
+                <!-- Cancel/Add to Dictionary buttons -->
+                <div class="modal-buttons">
+                    <button type="button" id="cancel-btn">Cancel</button>
+                    <button type="submit">Add to Dictionary</button>
+                </div>
+            </form>
+            
+        </div>
+    </div>
+</body>
+</html>

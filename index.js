@@ -55,3 +55,16 @@ function renderTable() {
     });
 
 }
+
+// і нарешті канешно же ми дійшли до попапа.. ісе цікаво
+
+function openModal() {
+    modal.classList.remove("hidden");
+    modal.style.display = "flex";
+    form.reset();
+}
+
+function closeModal() {
+    modal.classList.add("hidden");
+    modal.style.display = "none";
+}

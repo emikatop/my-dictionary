@@ -15,11 +15,43 @@ function loadFromStorage(){
 }
 
 // ДОМ елімєнти привязка до нтмл треба ж їх якось поєднати нет? 
-
 const addNewBtn = document.getElementById("add-new-btn");
 const tableBody = document.getElementById("dictionary-table");
 const form = document.getElementById("add-form");
 const modal = document.getElementById("modal");
 const cancelBtn = document.getElementById("cancel-btn");
 
-`
+// таблиця має ж відображати шо там в dictionary, нє так лі? 
+function renderTable() {
+
+    // спочатку почисти таблицю бо інакше нові накладуться на старі webreloads і будуть дублікати
+    tableBody.innerHTML = "";
+
+    // на випадок якшо пусто і ще раз нич в сєйфі нема 
+    if (dictionary.length === 0) {
+        tableBody.innerHTML = 
+            `
+            <tr>
+                <td colspan = "3" class = "empty-state">
+                    <i>No entries yet...</i>
+                 </td>
+            </tr>
+            `;
+        return;
+    }
+
+    // а тут я кароче створюю ту таблицю
+    dictionary.forEach((entry, index) => {
+        const row = document.createElement("tr");
+        row.innerHTML = 
+        `
+        <td><strong>${entry.word}</strong></td>
+        <td> ${entry.example}</td>
+        <td> ${entry.translation}</td>
+
+        <button class = "delete-btn" data-index = "${index}"> Delete </button>
+        `
+        tableBody.appendChild(row);
+    });
+
+}

@@ -51,7 +51,7 @@ function renderTable() {
         <td> ${entry.example}</td>
         <td> ${entry.translation}</td>
 
-        <button class = "delete-btn" data-index = "${index}"> Delete </button>
+        <td><button class = "delete-btn" data-index = "${index}"> Delete </button></td>
         `
         tableBody.appendChild(row);
     });

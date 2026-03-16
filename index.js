@@ -18,7 +18,7 @@ function loadFromStorage(){
 
 // ДОМ елімєнти привязка до нтмл треба ж їх якось поєднати нет? 
 const addNewBtn = document.getElementById("add-new-btn");
-const tableBody = document.getElementById("dictionary-table");
+const tableBody = document.getElementById("table-body");
 const form = document.getElementById("add-form");
 const modal = document.getElementById("modal");
 const cancelBtn = document.getElementById("cancel-btn");

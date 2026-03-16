@@ -93,6 +93,11 @@ form.addEventListener("submit",function(e){
         alert("Fill out all the fields first");
         return;
     }
+
+    dictionary.push(newEntry);   // add to our array
+    saveToStorage();            
+    renderTable();             
+    closeModal();                
 })
 
 // cancel btn

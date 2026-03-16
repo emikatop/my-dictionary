@@ -105,3 +105,18 @@ modal.addEventListener("click", function(e){
     }
 }); 
 // target=element which юзер клікнув 
+
+// удаліть баттонс 
+
+tableBody.addEventListener("click", function(e){
+    if (e.target.classList.contains("delete-btn")) {
+        
+        const index = parseInt(e.target.dataset.index);
+
+        if (confirm("Delete this entry?")) {
+            dictionary.splice(index, 1);
+            saveToStorage();
+            renderTable();
+        }
+    }
+});

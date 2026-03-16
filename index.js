@@ -5,6 +5,8 @@ let dictionary = [];
 function saveToStorage() {
   localStorage.setItem("myDictionary", JSON.stringify(dictionary));
 }
+//каже блін ваня ош локал сторедж фігня і треба скл пілключати а я хз як ну ладно розберемось
+
 
 // викачати слова з сєйфа, але пропусти через зміну формату
 function loadFromStorage(){
@@ -56,6 +58,7 @@ function renderTable() {
 
 }
 
+
 // і нарешті канешно же ми дійшли до попапа.. ісе цікаво
 
 function openModal() {
@@ -68,3 +71,37 @@ function closeModal() {
     modal.classList.add("hidden");
     modal.style.display = "none";
 }
+
+
+// додаю евент лісенери шоб кнопки робили
+
+// add new btn -> modal open
+addNewBtn.addEventListener("click", openModal);
+
+// form subbmition in the modal
+form.addEventListener("submit",function(e){
+    e.preventDefault();
+     
+    // створюю об'єкт з того шо юзер вписав в поля(value=get the value):
+    const newEntry = {
+        word: document.getElementById("word").value.trim(),
+        example: document.getElementById("example").value.trim(),
+        translation: document.getElementById("translation").value.trim() 
+    }
+
+    if (!newEntry.word || !newEntry.example || !newEntry.translation) {
+        alert("Fill out all the fields first");
+        return;
+    }
+})
+
+// cancel btn
+cancelBtn.addEventListener("click", closeModal); 
+
+// close by clicking outside modal
+modal.addEventListener("click", function(e){
+    if (e.target === modal) {
+        closeModal();
+    }
+}); 
+// target=element which юзер клікнув 

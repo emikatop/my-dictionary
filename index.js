@@ -107,7 +107,6 @@ modal.addEventListener("click", function(e){
 // target=element which юзер клікнув 
 
 // удаліть баттонс 
-
 tableBody.addEventListener("click", function(e){
     if (e.target.classList.contains("delete-btn")) {
         
@@ -120,3 +119,8 @@ tableBody.addEventListener("click", function(e){
         }
     }
 });
+
+
+// Без цього — відкриваєш словник, а таблиця пуста. Хоча дані є.
+loadFromStorage();
+renderTable();

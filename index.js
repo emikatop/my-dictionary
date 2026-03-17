@@ -47,7 +47,7 @@ function renderTable() {
         const row = document.createElement("tr");
         row.innerHTML = 
         `
-        <td><strong>${entry.word}</strong></td>
+        <td>${entry.word}</td>
         <td> ${entry.example}</td>
         <td> ${entry.translation}</td>
 

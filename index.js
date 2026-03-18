@@ -55,6 +55,7 @@ function renderTable() {
         <td>${entry.word}</td>
         <td> ${entry.example}</td>
         <td> ${entry.translation}</td>
+        <td></td>
         `
         tableBody.appendChild(row);
 

@@ -160,9 +160,10 @@ const themeToggle = document.getElementById('theme-toggle');
 
 themeToggle.addEventListener('click', function() {
     document.documentElement.classList.toggle('light');
-    themeToggle.textContent = document.documentElement.classList.contains('light') ? '🌙' : '☀️';
+    const isLight = document.documentElement.classList.contains('light');
+    themeToggle.innerHTML = isLight ? '<i data-lucide="sun"></i>' : '<i data-lucide="moon"></i>';
+    lucide.createIcons();
 });
-
 
 // Без цього — відкриваєш словник, а таблиця пуста. Хоча дані є.
 loadFromStorage();

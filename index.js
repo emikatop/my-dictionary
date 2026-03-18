@@ -155,6 +155,15 @@ editBtn.addEventListener('click', function() {
     openModal();
 });
 
+//Light/Dark theme
+const themeToggle = document.getElementById('theme-toggle');
+
+themeToggle.addEventListener('click', function() {
+    document.documentElement.classList.toggle('light');
+    themeToggle.textContent = document.documentElement.classList.contains('light') ? '🌙' : '☀️';
+});
+
+
 // Без цього — відкриваєш словник, а таблиця пуста. Хоча дані є.
 loadFromStorage();
 renderTable();

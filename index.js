@@ -23,6 +23,11 @@ const form = document.getElementById("add-form");
 const modal = document.getElementById("modal");
 const cancelBtn = document.getElementById("cancel-btn");
 
+const rowActionsOverlay = document.getElementById('row-actions');
+const editBtn = document.getElementById('edit-btn');
+const deleteBtn = document.getElementById('delete-btn');
+let selectedIndex = null;
+
 // таблиця має ж відображати шо там в dictionary, нє так лі? 
 function renderTable() {
 
@@ -35,7 +40,7 @@ function renderTable() {
             `
             <tr>
                 <td colspan = "3" class = "empty-state">
-                    <i>No entries yet...</i>
+                    No entries yet...
                  </td>
             </tr>
             `;
@@ -50,12 +55,17 @@ function renderTable() {
         <td>${entry.word}</td>
         <td> ${entry.example}</td>
         <td> ${entry.translation}</td>
-
-        <td><button class = "delete-btn" data-index = "${index}"> Delete </button></td>
         `
         tableBody.appendChild(row);
+
+        row.addEventListener('click', function() {
+        selectedIndex = index;
+        rowActionsOverlay.classList.remove('hidden');
+        rowActionsOverlay.style.display = 'flex';
+
     });
 
+});
 }
 
 
@@ -64,7 +74,6 @@ function renderTable() {
 function openModal() {
     modal.classList.remove("hidden");
     modal.style.display = "flex";
-    form.reset();
 }
 
 function closeModal() {
@@ -94,7 +103,13 @@ form.addEventListener("submit",function(e){
         return;
     }
 
-    dictionary.push(newEntry);   // add to our array
+    if (selectedIndex !== null) {
+    dictionary[selectedIndex] = newEntry;  // оновити існуючий
+    selectedIndex = null;
+    } else {
+    dictionary.push(newEntry);             // додати новий
+    }
+
     saveToStorage();            
     renderTable();             
     closeModal();                
@@ -111,20 +126,34 @@ modal.addEventListener("click", function(e){
 }); 
 // target=element which юзер клікнув 
 
-// удаліть баттонс 
-tableBody.addEventListener("click", function(e){
-    if (e.target.classList.contains("delete-btn")) {
-        
-        const index = parseInt(e.target.dataset.index);
-
-        if (confirm("Delete this entry?")) {
-            dictionary.splice(index, 1);
-            saveToStorage();
-            renderTable();
-        }
+// закрити по кліку на фон
+rowActionsOverlay.addEventListener('click', function(e) {
+    if (e.target === rowActionsOverlay) {
+        rowActionsOverlay.classList.add('hidden');
     }
 });
 
+// delete
+deleteBtn.addEventListener('click', function () {
+        dictionary.splice(selectedIndex, 1);
+        saveToStorage();
+        renderTable();
+        rowActionsOverlay.classList.add('hidden');
+    }
+);
+
+// edit - поки просто закриває, зробимо потім
+editBtn.addEventListener('click', function() {
+    rowActionsOverlay.classList.add('hidden');
+    rowActionsOverlay.style.display = 'none';
+
+    // заповни поля модала існуючими даними
+    document.getElementById('word').value = dictionary[selectedIndex].word;
+    document.getElementById('example').value = dictionary[selectedIndex].example;
+    document.getElementById('translation').value = dictionary[selectedIndex].translation;
+
+    openModal();
+});
 
 // Без цього — відкриваєш словник, а таблиця пуста. Хоча дані є.
 loadFromStorage();

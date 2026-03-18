@@ -92,17 +92,6 @@ border-bottom: 2px solid #444;
 padding-bottom: 10px;
 }
 
-.delete-btn {
-    padding: 4px 10px;
-    font-size: 11px;
-    font-weight: 400;
-    opacity: 0.5;
-}
-
-.delete-btn:hover {
-    opacity: 1;
-}
-
 /* Modal */
 
 .modal {
@@ -191,3 +180,45 @@ button:hover {
 }
 
 .hidden { display: none !important; }
+
+/* Edit and Delete buttons in a table row */
+.row-actions-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.row-actions-popup {
+    display: flex;
+    flex-direction: row;
+    gap: 10%;
+}
+
+#edit-btn {
+    background: #5A5A5A;
+    padding: 20px 34px;
+    font-size: 16px;
+}
+
+#edit-btn:hover {
+    background: #454545;
+}
+
+#delete-btn {
+    background: #272727;
+    padding: 20px 34px;
+    font-size: 16px;
+}
+
+#delete-btn:hover {
+    background: #452828;
+}
+
+.empty-state {
+padding: 15px;
+font-weight: 300;
+}

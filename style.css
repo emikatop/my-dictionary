@@ -3,26 +3,58 @@
     src: url(/Google_Sans/GoogleSans-VariableFont_GRAD\,opsz\,wght.ttf);
 }
 
+/* ==================== CSS VARIABLES ==================== */
+:root {
+    --bg:           #181818;
+    --surface:      #353535;
+    --surface2:     #5A5A5A;
+    --text:         #ffffff;
+    --text-muted:   #e0e0e0;
+    --border:       #373737;
+    --border-head:  #444444;
+    --btn-hover:    #454545;
+    --delete-bg:    #272727;
+    --delete-hover: #452828;
+    --shadow:       rgba(0, 0, 0, 0.5);
+    --overlay:      rgba(0, 0, 0, 0.5);
+}
+
+:root.light {
+    --bg:           #f0f0f0;
+    --surface:      #ffffff;
+    --surface2:     #d4d4d4;
+    --text:         #111111;
+    --text-muted:   #444444;
+    --border:       #cccccc;
+    --border-head:  #bbbbbb;
+    --btn-hover:    #e0e0e0;
+    --delete-bg:    #e8e8e8;
+    --delete-hover: #f5c0c0;
+    --shadow:       rgba(0, 0, 0, 0.15);
+    --overlay:      rgba(0, 0, 0, 0.4);
+}
+
+/* ==================== BASE ==================== */
 * {padding: 0; margin: 0; box-sizing: border-box;}
 
 body {
     font-family: Roboto, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background: #181818;
-    color: #ffffff;
+    background: var(--bg);
+    color: var(--text);
     min-height: 100vh;
 
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    transition: background 0.3s, color 0.3s;
 }
 
-
-/* Header */
-
+/* ==================== HEADER ==================== */
 header {
     width: 100vh;
     max-width: 900px;
-    background: #5A5A5A;
+    background: var(--surface2);
     padding: 20px;
 
     display: flex;
@@ -33,11 +65,11 @@ header {
     margin-top: 1vh;
 }
 
-h1{font-size: 28px; font-weight: 500; user-select: none;}
+h1 {font-size: 28px; font-weight: 500; user-select: none;}
 
 .add-btn {
-    background: #353535;
-    color:#e0e0e0;
+    background: var(--surface);
+    color: var(--text-muted);
 
     border: none;
     padding: 12px 25px;
@@ -50,23 +82,41 @@ h1{font-size: 28px; font-weight: 500; user-select: none;}
 }
 
 .add-btn:hover {
-    background: #454545;
+    background: var(--btn-hover);
 }
 
+/* ==================== THEME TOGGLE ==================== */
+.theme-toggle {
+    background: var(--surface);
+    color: var(--text-muted);
 
-/* Table */
+    border: none;
+    padding: 10px 16px;
+    border-radius: 25px;
 
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-right: 10px;
+}
+
+.theme-toggle:hover {
+    background: var(--btn-hover);
+}
+
+/* ==================== TABLE ==================== */
 .table-container {
     width: 100vh;
     max-width: 900px;
-    background: #353535;
+    background: var(--surface);
 
     border-radius: 3px 3px 25px 25px;
     padding: 18px;
     margin-top: 6px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    box-shadow: 0 10px 30px var(--shadow);
 
     user-select: none;
+    transition: background 0.3s;
 }
 
 table { width: 100%; border-collapse: collapse;}
@@ -74,31 +124,35 @@ table { width: 100%; border-collapse: collapse;}
 th, td {
     padding: 8px;
     text-align: center;
-    border-bottom: 1px solid #373737;
+    border-bottom: 1px solid var(--border);
 }
 
 td {
     font-weight: 300;
-    color: #e0e0e0; 
+    color: var(--text-muted);
 }
 
 th {
-text-transform: capitalize;
-font-size: 15px;
-font-weight: 500;
-letter-spacing: 0.6px;
-color: white;        
-border-bottom: 2px solid #444;
-padding-bottom: 10px;
+    text-transform: capitalize;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.6px;
+    color: var(--text);
+    border-bottom: 2px solid var(--border-head);
+    padding-bottom: 10px;
 }
 
-/* Modal */
+.empty-state {
+    padding: 15px;
+    font-weight: 300;
+}
 
+/* ==================== MODAL ==================== */
 .modal {
     position: fixed;
     inset: 0;
 
-    background: rgba(0, 0, 0, 0.5);
+    background: var(--overlay);
 
     display: none;
     justify-content: center;
@@ -111,8 +165,9 @@ padding-bottom: 10px;
     max-width: 480px;
     padding: 35px;
 
-    background: #5A5A5A;
+    background: var(--surface2);
     border-radius: 35px;
+    transition: background 0.3s;
 }
 
 .modal h2 {
@@ -126,10 +181,10 @@ padding-bottom: 10px;
     margin-bottom: 20px;
 }
 
-label{
+label {
     display: block;
     margin-bottom: 3px;
-    color: #e0e0e0;
+    color: var(--text-muted);
     font-size: 14px;
     font-weight: 600;
 }
@@ -137,18 +192,19 @@ label{
 input, textarea {
     width: 100%;
     padding: 10px 14px;
-    background: #353535;
+    background: var(--surface);
 
-    border: 1px solid #444;
+    border: 1px solid var(--border-head);
     border-radius: 5px;
 
-    color: white;
+    color: var(--text);
     font-size: 16px;
+    transition: background 0.3s, color 0.3s;
 }
 
 input:focus {
     outline: none !important;
-    border:1px solid #a8a8a8;
+    border: 1px solid var(--text-muted);
 }
 
 .modal-buttons {
@@ -158,9 +214,10 @@ input:focus {
     margin-top: 20px;
 }
 
+/* ==================== BUTTONS ==================== */
 button {
-    background: #353535;
-    color:#e0e0e0;
+    background: var(--surface);
+    color: var(--text-muted);
 
     border: none;
     padding: 10px 21px;
@@ -169,23 +226,20 @@ button {
     font-size: 14px;
     font-weight: 600;
 
-
     user-select: none;
     cursor: pointer;
     transition: all 0.2s;
 }
 
 button:hover {
-    background: #454545;
+    background: var(--btn-hover);
 }
 
-.hidden { display: none !important; }
-
-/* Edit and Delete buttons in a table row */
+/* ==================== ROW ACTIONS POPUP ==================== */
 .row-actions-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.5);
+    background: var(--overlay);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -199,26 +253,24 @@ button:hover {
 }
 
 #edit-btn {
-    background: #5A5A5A;
+    background: var(--surface2);
     padding: 20px 34px;
     font-size: 16px;
 }
 
 #edit-btn:hover {
-    background: #454545;
+    background: var(--btn-hover);
 }
 
 #delete-btn {
-    background: #272727;
+    background: var(--delete-bg);
     padding: 20px 34px;
     font-size: 16px;
 }
 
 #delete-btn:hover {
-    background: #452828;
+    background: var(--delete-hover);
 }
 
-.empty-state {
-padding: 15px;
-font-weight: 300;
-}
+/* ==================== UTILS ==================== */
+.hidden { display: none !important; }

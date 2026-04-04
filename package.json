@@ -1,0 +1,25 @@
+{
+  "name": "my-dictionary",
+  "version": "1.0.0",
+  "description": "The base idea for this project is **tracking new words learned in a foreign language**.I am developing it not only to learn the process of development and to add projects to my portfolio, but also because I genuenly need such a program.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emikatop/my-dictionary.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/emikatop/my-dictionary/issues"
+  },
+  "homepage": "https://github.com/emikatop/my-dictionary#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}

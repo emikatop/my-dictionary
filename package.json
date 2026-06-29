@@ -1,0 +1,24 @@
+{
+  "name": "my-dictionary",
+  "version": "1.0.0",
+  "description": "A vocabulary tracker for language learners. Store words with translations  and example sentences.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emikatop/my-dictionary.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/emikatop/my-dictionary/issues"
+  },
+  "homepage": "https://github.com/emikatop/my-dictionary#readme",
+  "dependencies": {
+    "better-sqlite3": "^12.11.1",
+    "express": "^5.2.1"
+  }
+}

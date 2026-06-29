@@ -1,8 +1,3 @@
-@font-face {
-    font-family: googleSans;
-    src: url(/Google_Sans/GoogleSans-VariableFont_GRAD\,opsz\,wght.ttf);
-}
-
 /* ==================== CSS VARIABLES ==================== */
 :root {
     --bg:           #181818;

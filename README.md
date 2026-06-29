@@ -3,8 +3,6 @@
 A vocabulary tracker for language learners. Store words with translations 
 and example sentences.
 
-**[Live Demo](#)** *(coming soon — requires backend)*
-
 ![My Dictionary](preview.png)
 
 ## Stack

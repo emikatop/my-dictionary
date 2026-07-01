@@ -21,6 +21,10 @@ and example sentences.
 - AI translation integration
 - Words categorisation 
 - Improve design
+- New-to-old word listing
+- Clear the Add New window when opened
+- Replace "Add to Dictionary" with "Save"
+
 
 
 ## Roadmap

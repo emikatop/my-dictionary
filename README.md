@@ -17,11 +17,16 @@ and example sentences.
 - Dark mode
 - localStorage *(temporary — migrating to SQLite)*
 
+## Planned
+- AI translation integration
+- Words categorisation 
+- Improve design
+
+
 ## Roadmap
 
 - REST API with Node.js + Express
 - SQLite database
-- Word categories and sorting
 
 ## Run Locally
 

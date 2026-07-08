@@ -24,6 +24,7 @@ and example sentences.
 - New-to-old word listing
 - Clear the Add New window when opened
 - Replace "Add to Dictionary" with "Save"
+- When scroll, keep the top bar in place
 
 
 

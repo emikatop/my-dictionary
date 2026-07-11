@@ -1,19 +1,11 @@
 // словам треба ж десь бути і показуватись нет?
 let dictionary = [];
 
-// закачати слова в сєйф на браузєрі, бо десь ж мають лежати поки ти не вчишся 
-function saveToStorage() {
-  localStorage.setItem("myDictionary", JSON.stringify(dictionary));
-}
-//каже блін ваня ош локал сторедж фігня і треба скл пілключати а я хз як ну ладно розберемось
-
-
-// викачати слова з сєйфа, але пропусти через зміну формату
-function loadFromStorage(){
-    const savedData = localStorage.getItem("myDictionary")
-    if (savedData) {
-        dictionary = JSON.parse(savedData)
-    }
+async function loadWords() {
+    const response = await fetch('http://localhost:3000/words');
+    const words = await response.json();
+    dictionary = words;
+    renderTable();
 }
 
 // ДОМ елімєнти привязка до нтмл треба ж їх якось поєднати нет? 
@@ -55,7 +47,6 @@ function renderTable() {
         <td>${entry.word}</td>
         <td> ${entry.example}</td>
         <td> ${entry.translation}</td>
-        <td></td>
         `
         tableBody.appendChild(row);
 
@@ -166,6 +157,4 @@ themeToggle.addEventListener('click', function() {
     lucide.createIcons();
 });
 
-// Без цього — відкриваєш словник, а таблиця пуста. Хоча дані є.
-loadFromStorage();
-renderTable();
+loadWords();

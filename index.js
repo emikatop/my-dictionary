@@ -71,8 +71,8 @@ function openModal() {
 function closeModal() {
     modal.classList.add("hidden");
     modal.style.display = "none";
+    selectedIndex = null;
 }
-
 
 // додаю евент лісенери шоб кнопки робили
 

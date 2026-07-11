@@ -22,17 +22,17 @@ app.post('/words', (req, res) => {
 
 // --- DELETE route to remove a word from the database
 app.delete('/words/:id', (req, res) => {
-    const {id} = Number(req.params.id);
+    const id = Number(req.params.id);
     db.prepare('DELETE FROM words WHERE id = ?').run(id);
     res.json({message: 'Word deleted'});
 })
 
-// --- PUT route to edit a word in the database
-app.put('/words/:id', (req, res) => {
-    const {id} = Number(req.params.id);
+// --- PATCH route to edit a word in the database
+app.patch('/words/:id', (req, res) => {
+    const id = Number(req.params.id);
     const { word, example, translation } = req.body;
     db.prepare('UPDATE words SET word = ?, example = ?, translation = ? WHERE id = ?').run(word, example, translation, id);
-    res.json({message: 'Wordupdated'});
+    res.json({message: 'Word updated'});
 })
 
 //Listen to port 3000

@@ -3,8 +3,8 @@ const db = new Database('words.db');
 
 db.exec(`CREATE TABLE IF NOT EXISTS words (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    words TEXT NOT NULL,
-    examples TEXT,
+    word TEXT NOT NULL,
+    example TEXT,
     translation TEXT NOT NULL
     )`);
 

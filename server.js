@@ -7,7 +7,10 @@ const app = express();
 app.use(cors()); // дозволяє фронтенду звертатись до сервера
 app.use(express.json()); //allows the server to parse(converts json->js object)incoming JSON data in the request body.
 
-
+app.get('/words', (req, res) => {
+    const words = db.prepare('SELECT * FROM words').all();
+    res.json(words);
+})
 
 //Listen to port 3000
 app.listen(3000, () => {

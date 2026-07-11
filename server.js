@@ -9,7 +9,7 @@ app.use(express.json()); //allows the server to parse(converts json->js object)i
 
 // --- GET route to fetch all words from the database
 app.get('/words', (req, res) => {
-    const words = db.prepare('SELECT * FROM words').all();
+    const words = db.prepare('SELECT * FROM words ORDER BY id DESC').all();
     res.json(words);
 })
 

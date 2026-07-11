@@ -79,8 +79,20 @@ function closeModal() {
 // add new btn -> modal open
 addNewBtn.addEventListener("click", openModal);
 
+async function addWord(newEntry) {
+        const response = await fetch('http://localhost:3000/words', {
+            method: 'POST', 
+            headers: {'Content-Type': 'application/json'}, 
+            body: JSON.stringify(newEntry)
+        })
+
+        const addedWord = await response.json();
+        dictionary.push(addedWord);
+        renderTable();
+    }
+
 // form subbmition in the modal
-form.addEventListener("submit",function(e){
+form.addEventListener("submit", async function(e){
     e.preventDefault();
      
     // створюю об'єкт з того шо юзер вписав в поля(value=get the value):
@@ -94,16 +106,20 @@ form.addEventListener("submit",function(e){
         alert("Fill out all the fields first");
         return;
     }
-
-    if (selectedIndex !== null) {
-    dictionary[selectedIndex] = newEntry;  // оновити існуючий
+if (selectedIndex !== null) {
+    const id = dictionary[selectedIndex].id
+    await fetch(`http://localhost:3000/words/${id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newEntry)
+    })
+    await loadWords()
     selectedIndex = null;
-    } else {
-    dictionary.push(newEntry);             // додати новий
-    }
-
-    saveToStorage();            
-    renderTable();             
+} else {
+        await addWord(newEntry);
+        selectedIndex = null;
+    }         
+            
     closeModal();                
 })
 
@@ -126,13 +142,14 @@ rowActionsOverlay.addEventListener('click', function(e) {
 });
 
 // delete
-deleteBtn.addEventListener('click', function () {
-        dictionary.splice(selectedIndex, 1);
-        saveToStorage();
-        renderTable();
-        rowActionsOverlay.classList.add('hidden');
-    }
-);
+deleteBtn.addEventListener('click', async function () {
+    const id = dictionary[selectedIndex].id
+    await fetch(`http://localhost:3000/words/${id}`, {
+        method: 'DELETE'
+    })
+    await loadWords()
+    rowActionsOverlay.classList.add('hidden')
+});
 
 // edit - поки просто закриває, зробимо потім
 editBtn.addEventListener('click', function() {

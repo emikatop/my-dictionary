@@ -72,7 +72,12 @@ function closeModal() {
     modal.classList.add("hidden");
     modal.style.display = "none";
     selectedIndex = null;
+
+    document.getElementById('word').value = '';
+    document.getElementById('example').value = '';
+    document.getElementById('translation').value = '';
 }
+
 
 // додаю евент лісенери шоб кнопки робили
 
@@ -87,7 +92,7 @@ async function addWord(newEntry) {
         })
 
         const addedWord = await response.json();
-        dictionary.push(addedWord);
+        dictionary.unshift(addedWord);
         renderTable();
     }
 
@@ -102,10 +107,6 @@ form.addEventListener("submit", async function(e){
         translation: document.getElementById("translation").value.trim() 
     }
 
-    if (!newEntry.word || !newEntry.example || !newEntry.translation) {
-        alert("Fill out all the fields first");
-        return;
-    }
 if (selectedIndex !== null) {
     const id = dictionary[selectedIndex].id
     await fetch(`http://localhost:3000/words/${id}`, {
